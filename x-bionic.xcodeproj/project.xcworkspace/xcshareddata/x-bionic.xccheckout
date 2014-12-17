@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>F3188677-1FDD-4AD3-85C4-742CB6109A1E</string>
+	<key>IDESourceControlProjectName</key>
+	<string>x-bionic</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>40FD77427C48628621D145CAA51D9998593F8FDC</key>
+		<string>https://github.com/usattc/X-BIONIC.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>x-bionic.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>40FD77427C48628621D145CAA51D9998593F8FDC</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/usattc/X-BIONIC.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>40FD77427C48628621D145CAA51D9998593F8FDC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>40FD77427C48628621D145CAA51D9998593F8FDC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>X-BIONIC</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -10,20 +10,49 @@
 #import "ActivityViewController.h"
 #import "BuyViewController.h"
 #import "Defines.h"
+#import "iCarousel.h"
 
-@interface ViewController () <UIScrollViewDelegate> {
+@interface ViewController () <UIActionSheetDelegate, UIScrollViewDelegate, iCarouselDataSource, iCarouselDelegate> {
     UIScrollView *_scrollView;
+    NSArray *_homePics; // 图片名数组
 }
 
+@property (strong, nonatomic) iCarousel *carousel;
+@property (nonatomic) BOOL wrap;
 @property (nonatomic, strong) NSMutableArray *items;
 
 @end
 
 @implementation ViewController
 
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
+//    {
+//        //set up data
+//        self.items = [NSMutableArray array];
+//        for (int i = 0; i < 1000; i++)
+//        {
+//            [_items addObject:@(i)];
+//        }
+//    }
+//    return self;
+//}
+
+- (void)dealloc
+{
+    //it's a good idea to set these to nil here to avoid
+    //sending messages to a deallocated viewcontroller
+    _carousel.delegate = nil;
+    _carousel.dataSource = nil;
+    
+}
+
+#pragma mark - View lifecycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _carousel.type = iCarouselTypeCylinder;
+    
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar"]
 //                                                  forBarMetrics:UIBarMetricsDefault];
     
@@ -84,26 +113,101 @@
 //    [buyButton addTarget:self action:@selector(pushBuyVC) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:buyButton];
     
-    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 20)];
-    NSLog(@"ScreenWidth:%g, ScreenHeight:%g", ScreenWidth, ScreenHeight);
-    _scrollView.delegate = self;
-    [self.view addSubview:_scrollView];
+//    _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - 20)];
+//    NSLog(@"ScreenWidth:%g, ScreenHeight:%g", ScreenWidth, ScreenHeight);
+//    _scrollView.delegate = self;
+//    [self.view addSubview:_scrollView];
     
-    NSArray *homePics = @[@"XProductPage", @"XStoryPage", @"XIntroducePage", @"XActivtyPage"];
+    _homePics = @[@"XProductPage", @"XStoryPage", @"XIntroducePage", @"XActivtyPage"];
     
-    for (NSInteger i = 0; i < 4; i++) {
-        UIImageView *imgView = [[UIImageView alloc] init];
-        NSString *imageName = homePics[i];
-        imgView.image = [UIImage imageNamed:imageName];
-        imgView.frame = CGRectMake(i * ScreenWidth, 0, ScreenWidth, ScreenHeight - 100);
-        [_scrollView addSubview:imgView];
+//    for (NSInteger i = 0; i < 4; i++) {
+//        UIImageView *imgView = [[UIImageView alloc] init];
+//        NSString *imageName = homePics[i];
+//        imgView.image = [UIImage imageNamed:imageName];
+//        imgView.frame = CGRectMake(i * ScreenWidth, 0, ScreenWidth, ScreenHeight - 100);
+//        [_scrollView addSubview:imgView];
         //        NSLog(@"image:%@", imageName);
-    }
+//    }
     
-    _scrollView.contentSize = CGSizeMake(homePics.count * ScreenWidth, 0);
-    _scrollView.pagingEnabled = YES;
+//    _scrollView.contentSize = CGSizeMake(homePics.count * ScreenWidth, 0);
+//    _scrollView.pagingEnabled = YES;
 //    NSLog(@"%@", [_scrollView subviews]);
+    _wrap = YES;
+    _carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
+    _carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    _carousel.type = iCarouselTypeCoverFlow2;
+    _carousel.delegate = self;
+    _carousel.dataSource = self;
+    
+    //add carousel to view
+    [self.view addSubview:_carousel];
 }
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    self.carousel = nil;
+}
+
+#pragma mark - iCarousel methods
+
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
+{
+    return [_homePics count];
+}
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
+{
+    view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+    ((UIImageView *)view).image = [UIImage imageNamed:_homePics[index]];
+    view.contentMode = UIViewContentModeCenter;
+//    UIImageView *imgView = [[UIImageView alloc] init];
+//    NSString *imageName = _homePics[index];
+//    imgView.image = [UIImage imageNamed:imageName];
+//    [view addSubview:imgView];
+//    view.backgroundColor = [UIColor redColor];
+    return view;
+}
+
+- (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform
+{
+    //implement 'flip3D' style carousel
+    transform = CATransform3DRotate(transform, M_PI / 8.0f, 0.0f, 1.0f, 0.0f);
+    return CATransform3DTranslate(transform, 0.0f, 0.0f, offset * carousel.itemWidth);
+}
+
+- (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
+{
+    //customize carousel display
+    switch (option)
+    {
+        case iCarouselOptionWrap:
+        {
+            //normally you would hard-code this to YES or NO
+            return _wrap;
+        }
+        case iCarouselOptionSpacing:
+        {
+            //add a bit of spacing between the item views
+            return value * 1.05f;
+        }
+        case iCarouselOptionFadeMax:
+        {
+            if (carousel.type == iCarouselTypeCustom)
+            {
+                //set opacity based on distance from camera
+                return 0.0f;
+            }
+            return value;
+        }
+        default:
+        {
+            return value;
+        }
+    }
+}
+
+#pragma mark - test end
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -129,7 +233,7 @@
 }
 
 // _scrollView无限循环
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 //    float offsetX = _scrollView.contentOffset.x;
 //    NSInteger scrollViewCount = [[_scrollView subviews] count];
     
@@ -146,125 +250,6 @@
 //    }
 //    NSLog(@"%g", offsetX);
 //    NSLog(@"%g", (ScreenWidth / 4 + ScreenWidth * (scrollViewCount - 1)));
-}
-
-#pragma mark - test
-
-- (void)setUp
-{
-    //set up data
-    self.items = [NSMutableArray array];
-    for (int i = 0; i < 1000; i++)
-    {
-        [_items addObject:@(i)];
-    }
-}
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
-    {
-        [self setUp];
-    }
-    return self;
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ((self = [super initWithCoder:aDecoder]))
-    {
-        [self setUp];
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    //it's a good idea to set these to nil here to avoid
-    //sending messages to a deallocated viewcontroller
-    _carousel.delegate = nil;
-    _carousel.dataSource = nil;
-    
-}
-
-#pragma mark -
-#pragma mark View lifecycle
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    self.carousel = nil;
-}
-
-- (IBAction)updateViewpointOffset:(UISlider *)slider
-{
-    CGSize offset = CGSizeMake(0.0f, slider.value);
-    _carousel.viewpointOffset = offset;
-    _viewpointOffsetLabel.text = NSStringFromCGSize(offset);
-}
-
-- (IBAction)updateContentOffset:(UISlider *)slider
-{
-    CGSize offset = CGSizeMake(0.0f, slider.value);
-    _carousel.contentOffset = offset;
-    _contentOffsetLabel.text = NSStringFromCGSize(offset);
-}
-
-#pragma mark -
-#pragma mark iCarousel methods
-
-- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel
-{
-    return [_items count];
-}
-
-- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view
-{
-    UILabel *label = nil;
-    
-    //create new view if no view is available for recycling
-    if (view == nil)
-    {
-        view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)];
-        ((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
-        view.contentMode = UIViewContentModeCenter;
-        label = [[UILabel alloc] initWithFrame:view.bounds];
-        label.backgroundColor = [UIColor clearColor];
-        label.font = [label.font fontWithSize:50];
-        label.tag = 1;
-        [view addSubview:label];
-    }
-    else
-    {
-        //get a reference to the label in the recycled view
-        label = (UILabel *)[view viewWithTag:1];
-    }
-    
-    //set item label
-    //remember to always set any properties of your carousel item
-    //views outside of the `if (view == nil) {...}` check otherwise
-    //you'll get weird issues with carousel item content appearing
-    //in the wrong place in the carousel
-    label.text = [_items[index] stringValue];
-    
-    return view;
-}
-
-- (CGFloat)carousel:(iCarousel *)_carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
-{
-    //customize carousel display
-    switch (option)
-    {
-        case iCarouselOptionSpacing:
-        {
-            //add a bit of spacing between the item views
-            return value * 1.05f;
-        }
-        default:
-        {
-            return value;
-        }
-    }
-}
+//}
 
 @end
