@@ -11,6 +11,7 @@
 #import "BuyViewController.h"
 #import "Defines.h"
 #import "iCarousel.h"
+#import "IntroduceViewController.h"
 
 @interface ViewController () <UIActionSheetDelegate, UIScrollViewDelegate, iCarouselDataSource, iCarouselDelegate> {
     UIScrollView *_scrollView;
@@ -286,7 +287,8 @@
         NSLog(@"XStoryPage");
     }
     else if (index == [_homePics indexOfObject:@"XIntroducePage"]) {
-        NSLog(@"XIntroducePage");
+        IntroduceViewController *ivc = [[IntroduceViewController alloc] init];
+        [self.navigationController pushViewController:ivc animated:YES];
     }
     else if (index == [_homePics indexOfObject:@"XActivtyPage"]) {
         ActivityViewController *avc = [[ActivityViewController alloc] init];
