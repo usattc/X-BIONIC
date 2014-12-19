@@ -52,7 +52,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationBar"]
 //                                                  forBarMetrics:UIBarMetricsDefault];
     
@@ -135,7 +135,13 @@
     _wrap = YES;
     _carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
     _carousel.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    // 效果风格
     _carousel.type = iCarouselTypeCoverFlow2;
+    // 减速速度
+    _carousel.decelerationRate = 0.8;
+    // 滚动速度
+    _carousel.scrollSpeed = 0.7;
+    
     _carousel.delegate = self;
     _carousel.dataSource = self;
     
@@ -160,7 +166,16 @@
 {
     view = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
     ((UIImageView *)view).image = [UIImage imageNamed:_homePics[index]];
+    // 用户交互为YES点击才有反应
+    view.userInteractionEnabled = YES;
     view.contentMode = UIViewContentModeCenter;
+    
+//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = self.view.bounds;
+//    button.tag = index + 100;
+//    [button addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+//    [view addSubview:button];
+    
 //    UIImageView *imgView = [[UIImageView alloc] init];
 //    NSString *imageName = _homePics[index];
 //    imgView.image = [UIImage imageNamed:imageName];
@@ -169,12 +184,12 @@
     return view;
 }
 
-- (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform
-{
-    //implement 'flip3D' style carousel
-    transform = CATransform3DRotate(transform, M_PI / 8.0f, 0.0f, 1.0f, 0.0f);
-    return CATransform3DTranslate(transform, 0.0f, 0.0f, offset * carousel.itemWidth);
-}
+//- (CATransform3D)carousel:(iCarousel *)carousel itemTransformForOffset:(CGFloat)offset baseTransform:(CATransform3D)transform
+//{
+//    //implement 'flip3D' style carousel
+//    transform = CATransform3DRotate(transform, M_PI / 8.0f, 0.0f, 1.0f, 0.0f);
+//    return CATransform3DTranslate(transform, 0.0f, 0.0f, offset * carousel.itemWidth);
+//}
 
 - (CGFloat)carousel:(iCarousel *)carousel valueForOption:(iCarouselOption)option withDefault:(CGFloat)value
 {
@@ -200,11 +215,20 @@
             }
             return value;
         }
+        case iCarouselOptionTilt:
+        {
+            return 0.95;
+        }
         default:
         {
             return value;
         }
     }
+}
+
+// 两项之间的宽度
+- (CGFloat)carouselItemWidth:(__unused iCarousel *)carousel {
+    return ScreenWidth + 200;
 }
 
 #pragma mark - test end
@@ -251,5 +275,23 @@
 //    NSLog(@"%g", offsetX);
 //    NSLog(@"%g", (ScreenWidth / 4 + ScreenWidth * (scrollViewCount - 1)));
 //}
+
+// 点击方法
+- (void)carousel:(iCarousel *)carousel didSelectItemAtIndex:(NSInteger)index {
+    if (index == [_homePics indexOfObject:@"XProductPage"]) {
+        BuyViewController *bvc = [[BuyViewController alloc] init];
+        [self.navigationController pushViewController:bvc animated:YES];
+    }
+    else if (index == [_homePics indexOfObject:@"XStoryPage"]) {
+        NSLog(@"XStoryPage");
+    }
+    else if (index == [_homePics indexOfObject:@"XIntroducePage"]) {
+        NSLog(@"XIntroducePage");
+    }
+    else if (index == [_homePics indexOfObject:@"XActivtyPage"]) {
+        ActivityViewController *avc = [[ActivityViewController alloc] init];
+        [self.navigationController pushViewController:avc animated:YES];
+    }
+}
 
 @end

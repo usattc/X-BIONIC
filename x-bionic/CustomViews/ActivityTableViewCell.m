@@ -28,11 +28,10 @@
 //        _subTitleLabel.textColor = [UIColor whiteColor];
 //        _subTitleLabel.textAlignment = NSTextAlignmentCenter;
         
-        _activityImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 80, ScreenWidth - 40, ScreenHeight / 3)];
-        _activityImageView.image = [UIImage imageNamed:@"ActivityPic"];
+        self.baseImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 80, ScreenWidth - 40, ScreenHeight / 3)];
         
         [self.contentView addSubview:_titleLabel];
-        [self.contentView addSubview:_activityImageView];
+        [self.contentView addSubview:self.baseImageView];
         [self.contentView addSubview:_subTitleLabel];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;

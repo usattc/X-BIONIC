@@ -18,6 +18,7 @@
 		798140321A3F19BF00FAFCB5 /* XIntroducePage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7981402E1A3F19BF00FAFCB5 /* XIntroducePage@2x.png */; };
 		798140331A3F19BF00FAFCB5 /* XProductPage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7981402F1A3F19BF00FAFCB5 /* XProductPage@2x.png */; };
 		798140341A3F19BF00FAFCB5 /* XStoryPage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 798140301A3F19BF00FAFCB5 /* XStoryPage@2x.png */; };
+		798F3A931A43C0DE0021F91E /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F3A921A43C0DE0021F91E /* BaseTableViewCell.m */; };
 		79C54A891A39D0B2000BA18E /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C54A801A39D0B2000BA18E /* ActivityViewController.m */; };
 		79C54A8A1A39D0B2000BA18E /* BuyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C54A821A39D0B2000BA18E /* BuyViewController.m */; };
 		79C54A8B1A39D0B2000BA18E /* IntroduceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C54A841A39D0B2000BA18E /* IntroduceViewController.m */; };
@@ -55,7 +56,6 @@
 		79C54AE91A39D106000BA18E /* userIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C54AE41A39D106000BA18E /* userIcon@2x.png */; };
 		79C54AED1A39D10D000BA18E /* ActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C54AEC1A39D10D000BA18E /* ActivityTableViewCell.m */; };
 		79C66F001A400F9C00575FF5 /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C66EFF1A400F9C00575FF5 /* iCarousel.m */; };
-		79C66F021A402B5700575FF5 /* page.png in Resources */ = {isa = PBXBuildFile; fileRef = 79C66F011A402B5700575FF5 /* page.png */; };
 		79DCA4BA1A3E50BF004E7F68 /* buyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 79DCA4B91A3E50BF004E7F68 /* buyButton.png */; };
 		79DCA4BD1A3E607A004E7F68 /* BuyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79DCA4BC1A3E607A004E7F68 /* BuyTableViewCell.m */; };
 		79E31F6A1A3AC37900270E16 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79E31F691A3AC37900270E16 /* BaseViewController.m */; };
@@ -91,6 +91,8 @@
 		7981402E1A3F19BF00FAFCB5 /* XIntroducePage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XIntroducePage@2x.png"; sourceTree = "<group>"; };
 		7981402F1A3F19BF00FAFCB5 /* XProductPage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XProductPage@2x.png"; sourceTree = "<group>"; };
 		798140301A3F19BF00FAFCB5 /* XStoryPage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XStoryPage@2x.png"; sourceTree = "<group>"; };
+		798F3A911A43C0DE0021F91E /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		798F3A921A43C0DE0021F91E /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		79C54A7F1A39D0B2000BA18E /* ActivityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
 		79C54A801A39D0B2000BA18E /* ActivityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		79C54A811A39D0B2000BA18E /* BuyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyViewController.h; sourceTree = "<group>"; };
@@ -162,7 +164,6 @@
 		79C54AEC1A39D10D000BA18E /* ActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityTableViewCell.m; sourceTree = "<group>"; };
 		79C66EFE1A400F9C00575FF5 /* iCarousel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iCarousel.h; sourceTree = "<group>"; };
 		79C66EFF1A400F9C00575FF5 /* iCarousel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iCarousel.m; sourceTree = "<group>"; };
-		79C66F011A402B5700575FF5 /* page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = page.png; sourceTree = "<group>"; };
 		79DCA4B91A3E50BF004E7F68 /* buyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyButton.png; sourceTree = "<group>"; };
 		79DCA4BB1A3E607A004E7F68 /* BuyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyTableViewCell.h; sourceTree = "<group>"; };
 		79DCA4BC1A3E607A004E7F68 /* BuyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyTableViewCell.m; sourceTree = "<group>"; };
@@ -200,6 +201,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7963F2231A41774400788D27 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7935FF5E1A3E8C8B00A27849 /* topNav@2x.png */,
+				7935FF5C1A3E89DA00A27849 /* allTopNav@2x.png */,
+				7935FF601A3EC81D00A27849 /* homeBackground@2x.png */,
+				7981402D1A3F19BF00FAFCB5 /* XActivtyPage@2x.png */,
+				7981402E1A3F19BF00FAFCB5 /* XIntroducePage@2x.png */,
+				7981402F1A3F19BF00FAFCB5 /* XProductPage@2x.png */,
+				798140301A3F19BF00FAFCB5 /* XStoryPage@2x.png */,
+				79C54AE21A39D106000BA18E /* navigationBar@2x.png */,
+				79C54AE31A39D106000BA18E /* searchIcon@2x.png */,
+				79C54AE41A39D106000BA18E /* userIcon@2x.png */,
+				79E31F6F1A3AD32F00270E16 /* backGround.png */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		7963F2251A41780E00788D27 /* Buy */ = {
+			isa = PBXGroup;
+			children = (
+				7935FF561A3E7EA000A27849 /* buyPic0.png */,
+				7935FF571A3E7EA000A27849 /* buyPic1.png */,
+			);
+			name = Buy;
+			sourceTree = "<group>";
+		};
+		7963F2271A4178E300788D27 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				79C54AE01A39D106000BA18E /* ActivityPic.png */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		7963F2281A41790600788D27 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				792D33151A3ADFA2002D5A11 /* activitButton.png */,
+				79DCA4B91A3E50BF004E7F68 /* buyButton.png */,
+				792D33131A3ADE60002D5A11 /* mainBackGround.png */,
+				79C54AE11A39D106000BA18E /* backIcon.png */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
 		79C54A7E1A39D0B2000BA18E /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,25 +352,10 @@
 		79C54ADF1A39D106000BA18E /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				79C54AE01A39D106000BA18E /* ActivityPic.png */,
-				7935FF5E1A3E8C8B00A27849 /* topNav@2x.png */,
-				7935FF5C1A3E89DA00A27849 /* allTopNav@2x.png */,
-				79C66F011A402B5700575FF5 /* page.png */,
-				7935FF601A3EC81D00A27849 /* homeBackground@2x.png */,
-				79E31F6F1A3AD32F00270E16 /* backGround.png */,
-				7981402D1A3F19BF00FAFCB5 /* XActivtyPage@2x.png */,
-				7981402E1A3F19BF00FAFCB5 /* XIntroducePage@2x.png */,
-				7981402F1A3F19BF00FAFCB5 /* XProductPage@2x.png */,
-				798140301A3F19BF00FAFCB5 /* XStoryPage@2x.png */,
-				7935FF561A3E7EA000A27849 /* buyPic0.png */,
-				7935FF571A3E7EA000A27849 /* buyPic1.png */,
-				792D33151A3ADFA2002D5A11 /* activitButton.png */,
-				79DCA4B91A3E50BF004E7F68 /* buyButton.png */,
-				792D33131A3ADE60002D5A11 /* mainBackGround.png */,
-				79C54AE11A39D106000BA18E /* backIcon.png */,
-				79C54AE21A39D106000BA18E /* navigationBar@2x.png */,
-				79C54AE31A39D106000BA18E /* searchIcon@2x.png */,
-				79C54AE41A39D106000BA18E /* userIcon@2x.png */,
+				7963F2281A41790600788D27 /* Other */,
+				7963F2271A4178E300788D27 /* Activity */,
+				7963F2251A41780E00788D27 /* Buy */,
+				7963F2231A41774400788D27 /* Home */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -333,6 +365,8 @@
 			children = (
 				79C54AEB1A39D10D000BA18E /* ActivityTableViewCell.h */,
 				79C54AEC1A39D10D000BA18E /* ActivityTableViewCell.m */,
+				798F3A911A43C0DE0021F91E /* BaseTableViewCell.h */,
+				798F3A921A43C0DE0021F91E /* BaseTableViewCell.m */,
 				79DCA4BB1A3E607A004E7F68 /* BuyTableViewCell.h */,
 				79DCA4BC1A3E607A004E7F68 /* BuyTableViewCell.m */,
 			);
@@ -493,7 +527,6 @@
 			files = (
 				79C54AE71A39D106000BA18E /* navigationBar@2x.png in Resources */,
 				79EF8E941A37E71500CB002A /* Main.storyboard in Resources */,
-				79C66F021A402B5700575FF5 /* page.png in Resources */,
 				798140331A3F19BF00FAFCB5 /* XProductPage@2x.png in Resources */,
 				79E31F701A3AD32F00270E16 /* backGround.png in Resources */,
 				7935FF591A3E7EA000A27849 /* buyPic1.png in Resources */,
@@ -558,6 +591,7 @@
 				79C54AD61A39D0C6000BA18E /* SDWebImagePrefetcher.m in Sources */,
 				79C54AC71A39D0C6000BA18E /* AFHTTPSessionManager.m in Sources */,
 				79C54AD01A39D0C6000BA18E /* SDImageCache.m in Sources */,
+				798F3A931A43C0DE0021F91E /* BaseTableViewCell.m in Sources */,
 				79C54AD41A39D0C6000BA18E /* SDWebImageDownloaderOperation.m in Sources */,
 				79EF8E8B1A37E71500CB002A /* main.m in Sources */,
 				79C54ACE1A39D0C6000BA18E /* MKAnnotationView+WebCache.m in Sources */,

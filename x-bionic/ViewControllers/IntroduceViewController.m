@@ -7,8 +7,13 @@
 //
 
 #import "IntroduceViewController.h"
+#import "Defines.h"
+#import "AFNetworking.h"
+#import "UIImageView+WebCache.h"
 
-@interface IntroduceViewController ()
+@interface IntroduceViewController () <UITableViewDataSource, UITableViewDelegate> {
+    UITableView *_tableView;
+}
 
 @end
 
@@ -16,22 +21,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self createTableView];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)createTableView {
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

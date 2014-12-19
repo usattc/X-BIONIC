@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseTableViewCell.h"
 
-@interface ActivityTableViewCell : UITableViewCell
+@interface ActivityTableViewCell : BaseTableViewCell
 
-@property (strong, nonatomic) UIImageView *activityImageView;
 @property (strong, nonatomic) UILabel *titleLabel;
 @property (strong, nonatomic) UILabel *subTitleLabel;
 @property (strong, nonatomic) UIButton *btn;
