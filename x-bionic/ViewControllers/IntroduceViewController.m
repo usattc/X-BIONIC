@@ -11,6 +11,11 @@
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "IntroduceTableViewCell.h"
+#import "HistroyViewController.h"
+#import "AwareViewController.h"
+#import "BionicProtoViewController.h"
+#import "ProductionBaseViewController.h"
+#import "DesignAndDevelopemtViewController.h"
 
 @interface IntroduceViewController () <UITableViewDataSource, UITableViewDelegate> {
     UITableView *_tableView;
@@ -58,6 +63,29 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return (ScreenHeight - 64) / 5;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == [_picsName indexOfObject:@"histroy-ip5"]) {
+        HistroyViewController *hvc = [[HistroyViewController alloc] init];
+        [self.navigationController pushViewController:hvc animated:YES];
+    }
+    else if (indexPath.row == [_picsName indexOfObject:@"awareimg-ip5"]) {
+        AwareViewController *avc = [[AwareViewController alloc] init];
+        [self.navigationController pushViewController:avc animated:YES];
+    }
+    else if (indexPath.row == [_picsName indexOfObject:@"bionicprototype-ip5"]) {
+        BionicProtoViewController *bvc = [[BionicProtoViewController alloc] init];
+        [self.navigationController pushViewController:bvc animated:YES];
+    }
+    else if (indexPath.row == [_picsName indexOfObject:@"productionbase-ip5"]) {
+        ProductionBaseViewController *pvc = [[ProductionBaseViewController alloc] init];
+        [self.navigationController pushViewController:pvc animated:YES];
+    }
+    else if (indexPath.row == [_picsName indexOfObject:@"designanddevelopemt-ip5"]) {
+        DesignAndDevelopemtViewController *dvc = [[DesignAndDevelopemtViewController alloc] init];
+        [self.navigationController pushViewController:dvc animated:YES];
+    }
 }
 
 @end

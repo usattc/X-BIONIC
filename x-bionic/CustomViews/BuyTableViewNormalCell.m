@@ -1,15 +1,15 @@
 //
-//  BuyTableViewCell.m
+//  BuyTableViewNormalCell.m
 //  x-bionic
 //
 //  Created by TTC on 14/12/15.
 //  Copyright (c) 2014年 TTC. All rights reserved.
 //
 
-#import "BuyTableViewCell.h"
+#import "BuyTableViewNormalCell.h"
 #import "Defines.h"
 
-@implementation BuyTableViewCell
+@implementation BuyTableViewNormalCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

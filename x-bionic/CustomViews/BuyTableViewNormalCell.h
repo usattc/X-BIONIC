@@ -1,5 +1,5 @@
 //
-//  BuyTableViewCell.h
+//  BuyTableViewNormalCell.h
 //  x-bionic
 //
 //  Created by TTC on 14/12/15.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BuyTableViewCell : UITableViewCell
+@interface BuyTableViewNormalCell : UITableViewCell
 
 @property (strong, nonatomic) UIImageView *buyImageView;
 
