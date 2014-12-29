@@ -15,7 +15,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         _buyImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, (ScreenHeight - 64) / 2)];
-        _buyImageView.image = [UIImage imageNamed:@"buyPic0"];
+//        _buyImageView.image = [UIImage imageNamed:@"buyPic0"];
         [self.contentView addSubview:_buyImageView];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;

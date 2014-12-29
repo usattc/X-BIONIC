@@ -20,6 +20,8 @@
 		798140331A3F19BF00FAFCB5 /* XProductPage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7981402F1A3F19BF00FAFCB5 /* XProductPage@2x.png */; };
 		798140341A3F19BF00FAFCB5 /* XStoryPage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 798140301A3F19BF00FAFCB5 /* XStoryPage@2x.png */; };
 		798F3A931A43C0DE0021F91E /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 798F3A921A43C0DE0021F91E /* BaseTableViewCell.m */; };
+		79A0AA211A498FD700A4A12E /* BuyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A0AA201A498FD700A4A12E /* BuyDetailViewController.m */; };
+		79A0AA241A49A79300A4A12E /* ProductCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A0AA231A49A79300A4A12E /* ProductCollectionViewCell.m */; };
 		79A2C5691A46BB3F000A32E5 /* BuyTableViewSpecialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2C5681A46BB3F000A32E5 /* BuyTableViewSpecialCell.m */; };
 		79A2C56C1A46FFE9000A32E5 /* BuyCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A2C56B1A46FFE9000A32E5 /* BuyCollectionViewCell.m */; };
 		79C54A891A39D0B2000BA18E /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C54A801A39D0B2000BA18E /* ActivityViewController.m */; };
@@ -119,6 +121,10 @@
 		798140301A3F19BF00FAFCB5 /* XStoryPage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XStoryPage@2x.png"; sourceTree = "<group>"; };
 		798F3A911A43C0DE0021F91E /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
 		798F3A921A43C0DE0021F91E /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		79A0AA1F1A498FD700A4A12E /* BuyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyDetailViewController.h; sourceTree = "<group>"; };
+		79A0AA201A498FD700A4A12E /* BuyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyDetailViewController.m; sourceTree = "<group>"; };
+		79A0AA221A49A79300A4A12E /* ProductCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCollectionViewCell.h; sourceTree = "<group>"; };
+		79A0AA231A49A79300A4A12E /* ProductCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCollectionViewCell.m; sourceTree = "<group>"; };
 		79A2C5671A46BB3F000A32E5 /* BuyTableViewSpecialCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyTableViewSpecialCell.h; sourceTree = "<group>"; };
 		79A2C5681A46BB3F000A32E5 /* BuyTableViewSpecialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuyTableViewSpecialCell.m; sourceTree = "<group>"; };
 		79A2C56A1A46FFE9000A32E5 /* BuyCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuyCollectionViewCell.h; sourceTree = "<group>"; };
@@ -471,6 +477,8 @@
 			children = (
 				79C54A811A39D0B2000BA18E /* BuyViewController.h */,
 				79C54A821A39D0B2000BA18E /* BuyViewController.m */,
+				79A0AA1F1A498FD700A4A12E /* BuyDetailViewController.h */,
+				79A0AA201A498FD700A4A12E /* BuyDetailViewController.m */,
 			);
 			name = Buy;
 			sourceTree = "<group>";
@@ -550,6 +558,8 @@
 				79DCA4BC1A3E607A004E7F68 /* BuyTableViewNormalCell.m */,
 				79A2C5671A46BB3F000A32E5 /* BuyTableViewSpecialCell.h */,
 				79A2C5681A46BB3F000A32E5 /* BuyTableViewSpecialCell.m */,
+				79A0AA221A49A79300A4A12E /* ProductCollectionViewCell.h */,
+				79A0AA231A49A79300A4A12E /* ProductCollectionViewCell.m */,
 			);
 			name = Buy;
 			sourceTree = "<group>";
@@ -765,6 +775,7 @@
 				79C54ACA1A39D0C6000BA18E /* AFURLConnectionOperation.m in Sources */,
 				79C54A8D1A39D0B2000BA18E /* ViewController.m in Sources */,
 				79C54A8B1A39D0B2000BA18E /* IntroduceViewController.m in Sources */,
+				79A0AA211A498FD700A4A12E /* BuyDetailViewController.m in Sources */,
 				79EF8E8E1A37E71500CB002A /* AppDelegate.m in Sources */,
 				79A2C5691A46BB3F000A32E5 /* BuyTableViewSpecialCell.m in Sources */,
 				79C54ADA1A39D0C6000BA18E /* UIImage+WebP.m in Sources */,
@@ -805,6 +816,7 @@
 				79C54ADD1A39D0C6000BA18E /* UIView+WebCacheOperation.m in Sources */,
 				79C54AD11A39D0C6000BA18E /* SDWebImageCompat.m in Sources */,
 				79C54AC81A39D0C6000BA18E /* AFNetworkReachabilityManager.m in Sources */,
+				79A0AA241A49A79300A4A12E /* ProductCollectionViewCell.m in Sources */,
 				79C54AC61A39D0C6000BA18E /* AFHTTPRequestOperationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
