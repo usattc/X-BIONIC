@@ -10,14 +10,15 @@
 
 @protocol BuyTableViewSpecialCellDelegate <NSObject>
 
-- (void)passID:(NSString *)cellID;
+- (void)didClickWithProductListDictionary:(NSDictionary *)productListDictionary;
 
 @end
 
 @interface BuyTableViewSpecialCell : UITableViewCell
 
 @property (nonatomic) id<BuyTableViewSpecialCellDelegate> delegate;
-@property (strong, nonatomic) NSMutableArray *productList;
+@property (strong, nonatomic) NSMutableArray *productListArr;
 @property (strong, nonatomic) UICollectionView *collectionView;
+@property (nonatomic) NSInteger speciaCellID;
 
 @end

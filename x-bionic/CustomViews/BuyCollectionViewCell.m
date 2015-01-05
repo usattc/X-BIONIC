@@ -43,12 +43,12 @@
 
 - (UILabel *)label {
     if (!_label) {
-        _label = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.center.x - 20, _cellHeight + 34, self.contentView.bounds.size.width, 10)];
+        _label = [[UILabel alloc] initWithFrame:CGRectMake(self.contentView.center.x - 20, _cellHeight + 20, self.contentView.bounds.size.width, 10)];
 //        NSLog(@"%g, %g", _label.center.x, _label.center.y);
         _label.textColor = [UIColor grayColor];
         // Lable中的字居中
         _label.textAlignment = NSTextAlignmentCenter;
-        _label.font = [UIFont systemFontOfSize:15];
+        _label.font = [UIFont systemFontOfSize:11];
         CGFloat temp = self.contentView.center.x;
         _label.center = CGPointMake(temp, _label.center.y);
 //        NSLog(@"%g, %g", _label.center.x, _label.center.y);

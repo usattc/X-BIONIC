@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		792D33141A3ADE60002D5A11 /* mainBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 792D33131A3ADE60002D5A11 /* mainBackGround.png */; };
 		792D33161A3ADFA2002D5A11 /* activitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 792D33151A3ADFA2002D5A11 /* activitButton.png */; };
+		792FD39E1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792FD39D1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png */; };
 		7935FF581A3E7EA000A27849 /* buyPic0.png in Resources */ = {isa = PBXBuildFile; fileRef = 7935FF561A3E7EA000A27849 /* buyPic0.png */; };
 		7935FF591A3E7EA000A27849 /* buyPic1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7935FF571A3E7EA000A27849 /* buyPic1.png */; };
 		7935FF5D1A3E89DA00A27849 /* allTopNav@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7935FF5C1A3E89DA00A27849 /* allTopNav@2x.png */; };
@@ -108,6 +109,7 @@
 /* Begin PBXFileReference section */
 		792D33131A3ADE60002D5A11 /* mainBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainBackGround.png; sourceTree = "<group>"; };
 		792D33151A3ADFA2002D5A11 /* activitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activitButton.png; sourceTree = "<group>"; };
+		792FD39D1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbackgroundActive@2x.png"; sourceTree = "<group>"; };
 		7932ED3A1A398B7000AA5578 /* Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Defines.h; path = "x-bionic/Defines.h"; sourceTree = "<group>"; };
 		7935FF561A3E7EA000A27849 /* buyPic0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyPic0.png; sourceTree = "<group>"; };
 		7935FF571A3E7EA000A27849 /* buyPic1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyPic1.png; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 			children = (
 				7935FF561A3E7EA000A27849 /* buyPic0.png */,
 				7977D80F1A4796B00075EA23 /* golf.png */,
+				792FD39D1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png */,
 				7935FF571A3E7EA000A27849 /* buyPic1.png */,
 			);
 			name = Buy;
@@ -748,6 +751,7 @@
 				79EF8E961A37E71500CB002A /* Images.xcassets in Resources */,
 				79DCA4BA1A3E50BF004E7F68 /* buyButton.png in Resources */,
 				792D33141A3ADE60002D5A11 /* mainBackGround.png in Resources */,
+				792FD39E1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png in Resources */,
 				792D33161A3ADFA2002D5A11 /* activitButton.png in Resources */,
 				79EBCD091A44187F0057A561 /* awareimg-ip5@2x.png in Resources */,
 				798140311A3F19BF00FAFCB5 /* XActivtyPage@2x.png in Resources */,
@@ -939,6 +943,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "x-bionic/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -949,6 +954,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "x-bionic/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

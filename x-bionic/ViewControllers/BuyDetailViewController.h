@@ -10,6 +10,7 @@
 
 @interface BuyDetailViewController : BaseViewController
 
-@property (strong, nonatomic) NSString *productID;
+@property (strong, nonatomic) NSMutableDictionary *productListDic;
+@property (assign, nonatomic) NSInteger cellID;
 
 @end

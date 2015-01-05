@@ -13,7 +13,7 @@
 #import "BuyDetailViewController.h"
 #import "AFNetworking.h"
 
-@interface BuyViewController () <UITableViewDataSource, UITableViewDelegate> {
+@interface BuyViewController () <UITableViewDataSource, UITableViewDelegate, BuyTableViewSpecialCellDelegate> {
     UITableView *_tableView;
     NSMutableArray *_cellArr;
     UIButton *_tempBtn;
@@ -53,6 +53,7 @@
                                                  //                                                 [_tableView reloadData];
                                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                  NSLog(@"%@", error.localizedDescription);
+                                                 [self alert];
                                              }];
     }
     
@@ -67,6 +68,8 @@
     _tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
     [self.view addSubview:_tableView];
 }
+
+#pragma mark - TableViewDelegate
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return _cellArr.count;
@@ -99,12 +102,16 @@
         BuyTableViewSpecialCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
             cell = [[BuyTableViewSpecialCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+            // 不能在viewDidLoad中, 因为spcialCell可能还没创建
+            cell.delegate = self;
         }
         if (indexPath.row == 1) {
-            cell.productList = _productList0;
+            cell.productListArr = _productList0;
+            cell.speciaCellID = 1;
         }
         else {
-            cell.productList = _productList1;
+            cell.productListArr = _productList1;
+            cell.speciaCellID = 2;
         }
         [cell.collectionView reloadData];
         return cell;
@@ -176,15 +183,49 @@
     }
 }
 
-- (void)push {
-    BuyDetailViewController *bvc = [[BuyDetailViewController alloc] init];
-    [self.navigationController pushViewController:bvc animated:YES];
+#pragma mark - BuyTableViewSpecialCellDelegate
+
+- (void)didClickWithProductListDictionary:(NSDictionary *)productListDictionary {
+    BuyDetailViewController *bdvc = [[BuyDetailViewController alloc] init];
+    bdvc.productListDic = productListDictionary[@"productList"];
+//    NSLog(@"测试:%@", productListDictionary[@"productList"]);
+//    NSLog(@"测试:%ld", (NSInteger)productListDictionary[@"specialCellID"]);
+    // 把id类型转成NSInteger
+    bdvc.cellID = [productListDictionary[@"specialCellID"] integerValue];
+    [self.navigationController pushViewController:bdvc animated:YES];
+}
+
+//- (void)push {
+//    BuyDetailViewController *bvc = [[BuyDetailViewController alloc] init];
+//    [self.navigationController pushViewController:bvc animated:YES];
+//}
+
+#pragma mark - Error Alert
+
+- (void)alert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您的网络好像出现了问题"
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+//    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消"
+//                                                           style:UIAlertActionStyleCancel
+//                                                         handler:nil];
+    
+//    [alert addAction:actionCancel];
+    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"确定"
+                                                           style:UIAlertActionStyleCancel
+                                                         handler:nil];
+    
+    [alert addAction:actionCancel];
+   [self presentViewController:alert animated:YES completion:nil];
 }
 
 #pragma mark - Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    BuyTableViewSpecialCell *specialCell = [[BuyTableViewSpecialCell alloc] init];
+//    specialCell.delegate = self;
     
     _productList0 = [NSMutableArray array];
     _productList1 = [NSMutableArray array];
@@ -204,12 +245,12 @@
     NSArray *arr = @[@"Normal", @"Normal"];
     _cellArr = [NSMutableArray arrayWithArray:arr];
     
-    _tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    _tempBtn.frame = CGRectMake(100, 100, 50, 40);
-    [_tempBtn setTitle:@"产品" forState:UIControlStateNormal];
-    [_tempBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:_tempBtn];
-    self.navigationItem.rightBarButtonItem = rightBtn;
+//    _tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    _tempBtn.frame = CGRectMake(100, 100, 50, 40);
+//    [_tempBtn setTitle:@"产品" forState:UIControlStateNormal];
+//    [_tempBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:_tempBtn];
+//    self.navigationItem.rightBarButtonItem = rightBtn;
     
     [self createTableView];
 }
