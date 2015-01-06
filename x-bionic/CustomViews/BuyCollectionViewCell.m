@@ -23,6 +23,9 @@
     if (self) {
         _cellWidth = 55 * (ScreenWidth / 320);
         _cellHeight = 55 * (ScreenWidth / 320);
+//        if (_delegate && [_delegate respondsToSelector:@selector(isBuyCollectionViewCellInitSuccess:)]) {
+//            [_delegate isBuyCollectionViewCellInitSuccess:YES];
+//        }
     }
     return self;
 }

@@ -12,8 +12,10 @@
 #import "BuyTableViewSpecialCell.h"
 #import "BuyDetailViewController.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD.h"
+#import "BuyCollectionViewCell.h"
 
-@interface BuyViewController () <UITableViewDataSource, UITableViewDelegate, BuyTableViewSpecialCellDelegate> {
+@interface BuyViewController () <UITableViewDataSource, UITableViewDelegate, BuyTableViewSpecialCellDelegate, MBProgressHUDDelegate> {
     UITableView *_tableView;
     NSMutableArray *_cellArr;
     UIButton *_tempBtn;
@@ -23,6 +25,10 @@
 //    NSInteger _specialCellState; // 记录当前出来的是哪个SpecailCell
     NSMutableArray *_productList0;
     NSMutableArray *_productList1;
+    // 等待效果
+    MBProgressHUD *_HUD;
+    // 控制cell能否点击
+    BOOL _isUserInteractionEnabled;
 }
 
 @end
@@ -48,6 +54,11 @@
                                           parameters:nil
                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                  [_productList1 addObjectsFromArray:responseObject[@"data"]];
+                                                 // 网络数据获取成功后关闭等待效果, 发送2个请求, 1个判断就够了
+                                                 [_HUD hide:YES];
+                                                 // tableView的cell点击开启
+                                                 _isUserInteractionEnabled = YES;
+                                                 [_tableView reloadData];
 //                                                 NSLog(@"_productList1:%@", _productList1[0]);
                                                  //                                                 [self createTableView];
                                                  //                                                 [_tableView reloadData];
@@ -83,7 +94,7 @@
         if (cell == nil) {
             cell = [[BuyTableViewNormalCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         }
-        
+        cell.userInteractionEnabled = _isUserInteractionEnabled;
         // 第一个NormalCell
         if (indexPath.row == 0) {
             cell.buyImageView.image = [UIImage imageNamed:@"buyPic0"];
@@ -203,6 +214,8 @@
 #pragma mark - Error Alert
 
 - (void)alert {
+    // 取消等待效果
+    [_HUD hide:YES];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您的网络好像出现了问题"
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -224,12 +237,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // tableView的cell点击关闭
+    _isUserInteractionEnabled = NO;
+    
+    // 等待效果
+    _HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:_HUD];
+    _HUD.mode = MBProgressHUDModeIndeterminate;
+    _HUD.delegate = self;
+    // 打开等待效果
+    [_HUD show:YES];
+    
 //    BuyTableViewSpecialCell *specialCell = [[BuyTableViewSpecialCell alloc] init];
 //    specialCell.delegate = self;
     
     _productList0 = [NSMutableArray array];
     _productList1 = [NSMutableArray array];
     
+    // 获取2次网络数据
     [self getDataListWithCellState:0];
     [self getDataListWithCellState:1];
     
@@ -251,6 +276,14 @@
 //    [_tempBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
 //    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:_tempBtn];
 //    self.navigationItem.rightBarButtonItem = rightBtn;
+    
+    
+//    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//    _HUD.delegate = self;
+//    [_HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+//    [self.view addSubview:_HUD];
+    
+    
     
     [self createTableView];
 }

@@ -22,6 +22,9 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
+
+    // 把navigationBar的背景色定为灰色
+    self.navigationController.navigationBar.tintColor = [UIColor grayColor];
     
     UIImageView *backGroundImageView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     [backGroundImageView setImage:[UIImage imageNamed:@"backGround"]];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7920D15D1A5B7AB6005A2C0C /* listButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7920D15C1A5B7AB6005A2C0C /* listButton@2x.png */; };
+		7920D1611A5B7DBD005A2C0C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7920D1601A5B7DBD005A2C0C /* MBProgressHUD.m */; };
 		792D33141A3ADE60002D5A11 /* mainBackGround.png in Resources */ = {isa = PBXBuildFile; fileRef = 792D33131A3ADE60002D5A11 /* mainBackGround.png */; };
 		792D33161A3ADFA2002D5A11 /* activitButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 792D33151A3ADFA2002D5A11 /* activitButton.png */; };
 		792FD39E1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 792FD39D1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png */; };
@@ -107,6 +109,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7920D15C1A5B7AB6005A2C0C /* listButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "listButton@2x.png"; sourceTree = "<group>"; };
+		7920D15F1A5B7DBD005A2C0C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7920D1601A5B7DBD005A2C0C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		792D33131A3ADE60002D5A11 /* mainBackGround.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainBackGround.png; sourceTree = "<group>"; };
 		792D33151A3ADFA2002D5A11 /* activitButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activitButton.png; sourceTree = "<group>"; };
 		792FD39D1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbackgroundActive@2x.png"; sourceTree = "<group>"; };
@@ -268,6 +273,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7920D15E1A5B7DBD005A2C0C /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				7920D15F1A5B7DBD005A2C0C /* MBProgressHUD.h */,
+				7920D1601A5B7DBD005A2C0C /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		7963F2231A41774400788D27 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +306,7 @@
 				7935FF561A3E7EA000A27849 /* buyPic0.png */,
 				7977D80F1A4796B00075EA23 /* golf.png */,
 				792FD39D1A5A26CB00EFA880 /* buttonbackgroundActive@2x.png */,
+				7920D15C1A5B7AB6005A2C0C /* listButton@2x.png */,
 				7935FF571A3E7EA000A27849 /* buyPic1.png */,
 			);
 			name = Buy;
@@ -332,6 +347,7 @@
 		79C54A8E1A39D0C6000BA18E /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				7920D15E1A5B7DBD005A2C0C /* MBProgressHUD */,
 				79C66EFD1A400F9C00575FF5 /* iCarousel */,
 				79C54A8F1A39D0C6000BA18E /* AFNetworking */,
 				79C54AA31A39D0C6000BA18E /* SDWebImage */,
@@ -726,6 +742,7 @@
 				798140331A3F19BF00FAFCB5 /* XProductPage@2x.png in Resources */,
 				79EBCD231A44256D0057A561 /* histroy@2x.png in Resources */,
 				79EBCD0D1A44187F0057A561 /* productionbase-ip5@2x.png in Resources */,
+				7920D15D1A5B7AB6005A2C0C /* listButton@2x.png in Resources */,
 				79E4CDC91A458B2900ED0112 /* histroytext@2x.png in Resources */,
 				79E31F701A3AD32F00270E16 /* backGround.png in Resources */,
 				79EBCD201A44256D0057A561 /* awareimg@2x.png in Resources */,
@@ -780,6 +797,7 @@
 				79C54A8D1A39D0B2000BA18E /* ViewController.m in Sources */,
 				79C54A8B1A39D0B2000BA18E /* IntroduceViewController.m in Sources */,
 				79A0AA211A498FD700A4A12E /* BuyDetailViewController.m in Sources */,
+				7920D1611A5B7DBD005A2C0C /* MBProgressHUD.m in Sources */,
 				79EF8E8E1A37E71500CB002A /* AppDelegate.m in Sources */,
 				79A2C5691A46BB3F000A32E5 /* BuyTableViewSpecialCell.m in Sources */,
 				79C54ADA1A39D0C6000BA18E /* UIImage+WebP.m in Sources */,

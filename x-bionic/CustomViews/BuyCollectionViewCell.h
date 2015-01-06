@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+//@protocol BuyCollectionViewCellDelegate <NSObject>
+//
+//- (void)isBuyCollectionViewCellInitSuccess:(BOOL)isSuccess;
+//
+//@end
+
 @interface BuyCollectionViewCell : UICollectionViewCell
 
+//@property (nonatomic) id<BuyCollectionViewCellDelegate> delegate;
 @property (strong, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UILabel *label;
 

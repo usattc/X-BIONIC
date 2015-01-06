@@ -67,10 +67,12 @@
  */
 - (void)initCollectionView {
     UICollectionViewFlowLayout *layout   = [[UICollectionViewFlowLayout alloc] init];
-    layout.itemSize                      = CGSizeMake(97, 145);
-    layout.minimumLineSpacing            = 10;
-    layout.sectionInset                  = UIEdgeInsetsMake(5, 5, 10, 5);
-    layout.minimumInteritemSpacing       = 10;
+    layout.itemSize                      = CGSizeMake(99, 145);
+    // 列距
+    layout.minimumLineSpacing            = 5;
+    layout.sectionInset                  = UIEdgeInsetsMake(5, 5, 5, 5);
+    // 行距
+    layout.minimumInteritemSpacing       = 5;
 
     _collectionView                      = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 37, self.view.bounds.size.width, self.view.bounds.size.height) collectionViewLayout:layout];
     _collectionView.dataSource           = self;
@@ -97,7 +99,7 @@
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                                                  target:nil
                                                                                  action:nil];
-    UIBarButtonItem *addBuuton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"addButton"]
+    UIBarButtonItem *addBuuton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"listButton"]
                                                                  style:UIBarButtonItemStylePlain
                                                                 target:nil
                                                                 action:nil];
