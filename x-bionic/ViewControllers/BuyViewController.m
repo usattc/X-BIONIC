@@ -12,7 +12,7 @@
 #import "BuyTableViewSpecialCell.h"
 #import "BuyDetailViewController.h"
 #import "AFNetworking.h"
-#import "MBProgressHUD.h"
+#import "Progress.h"
 #import "BuyCollectionViewCell.h"
 
 @interface BuyViewController () <UITableViewDataSource, UITableViewDelegate, BuyTableViewSpecialCellDelegate, MBProgressHUDDelegate> {
@@ -55,7 +55,8 @@
                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                  [_productList1 addObjectsFromArray:responseObject[@"data"]];
                                                  // 网络数据获取成功后关闭等待效果, 发送2个请求, 1个判断就够了
-                                                 [_HUD hide:YES];
+                                                 [Progress showProgressWithBool:NO];
+//                                                 [_HUD hide:YES];
                                                  // tableView的cell点击开启
                                                  _isUserInteractionEnabled = YES;
                                                  [_tableView reloadData];
@@ -215,7 +216,8 @@
 
 - (void)alert {
     // 取消等待效果
-    [_HUD hide:YES];
+//    [_HUD hide:YES];
+    [Progress showProgressWithBool:NO];
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您的网络好像出现了问题"
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
@@ -239,14 +241,15 @@
     
     // tableView的cell点击关闭
     _isUserInteractionEnabled = NO;
-    
-    // 等待效果
-    _HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-    [self.navigationController.view addSubview:_HUD];
-    _HUD.mode = MBProgressHUDModeIndeterminate;
-    _HUD.delegate = self;
+
+//    _HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//    [self.navigationController.view addSubview:_HUD];
+//    _HUD.mode = MBProgressHUDModeIndeterminate;
+////    _HUD.delegate = self;
+//    // 打开等待效果
+//    [_HUD show:YES];
     // 打开等待效果
-    [_HUD show:YES];
+    [Progress showProgressWithBool:YES];
     
 //    BuyTableViewSpecialCell *specialCell = [[BuyTableViewSpecialCell alloc] init];
 //    specialCell.delegate = self;

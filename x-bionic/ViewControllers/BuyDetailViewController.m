@@ -11,10 +11,12 @@
 #import "AFNetworking.h"
 #import "UIImageView+WebCache.h"
 #import "Defines.h"
+#import "Progress.h"
 
 @interface BuyDetailViewController () <UICollectionViewDataSource, UICollectionViewDelegate> {
     UICollectionView *_collectionView;
     NSMutableArray *_productListArr;
+    NSMutableArray *_originProductListArr;
 }
 
 @end
@@ -50,6 +52,9 @@
     return cell;
 }
 
+/**
+ *  获取产品数据, 取responseObject[@"data"]里的数组
+ */
 - (void)getProductList {
 //    NSLog(@"%@", _productList);
     NSString *tempStr = [NSString stringWithFormat:@"%@", _productListDic[@"id"]];
@@ -60,8 +65,10 @@
 //                                             NSLog(@"responseObject:%@", [responseObject[@"data"] class]);
         // responseObject[@"data"]里的数组是不可变的, 要转可变
         _productListArr = [responseObject[@"data"] mutableCopy];
-//        NSLog(@"%@", _productListArr);
+        _originProductListArr = _productListArr;
+        // 获取到数组后开始初始化CollectionView
         [self initCollectionView];
+        [Progress showProgressWithBool:NO];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"%@", error.localizedDescription);
     }];
@@ -110,6 +117,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [Progress showProgressWithBool:YES];
+    
     // 升序按钮
     UIButton *ascendBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     ascendBtn.frame     = CGRectMake(0, self.view.bounds.origin.x, self.view.bounds.size.width / 2, 37);
@@ -127,7 +136,7 @@
     [self.view addSubview:descendBtn];
     
     _productListArr = [NSMutableArray array];
-    
+    _originProductListArr = [NSMutableArray array];
     
     UIBarButtonItem *searchButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSearch
                                                                                  target:nil
@@ -140,6 +149,8 @@
     self.navigationItem.rightBarButtonItems = buttonArray;
     
     [self getProductList];
+    
+    
 }
 
 @end
