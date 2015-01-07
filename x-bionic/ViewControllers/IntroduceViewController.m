@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
+//    self.view.backgroundColor = [UIColor redColor];
     _picsName = @[@"histroy-ip5", @"awareimg-ip5", @"bionicprototype-ip5", @"productionbase-ip5", @"designanddevelopemt-ip5"];
     [self createTableView];
 }

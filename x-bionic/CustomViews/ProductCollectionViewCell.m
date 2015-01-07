@@ -20,8 +20,8 @@
 
 - (UIImageView *)imageView {
     if (!_imageView) {
-        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 50)];
-        _imageView.backgroundColor = [UIColor redColor];
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.contentView.bounds.size.width, 111)];
+//        _imageView.backgroundColor = [UIColor redColor];
         [self.contentView addSubview:_imageView];
     }
     return _imageView;
@@ -29,8 +29,9 @@
 
 - (UILabel *)nameLable {
     if (!_nameLable) {
-        _nameLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.contentView.bounds.size.width, 5)];
-        _nameLable.backgroundColor = [UIColor redColor];
+        _nameLable = [[UILabel alloc] initWithFrame:CGRectMake(3, 117, self.contentView.bounds.size.width, 7)];
+        _nameLable.textColor = [UIColor whiteColor];
+        _nameLable.font = [UIFont systemFontOfSize:13];
         [self.contentView addSubview:_nameLable];
     }
     return _nameLable;
@@ -38,8 +39,10 @@
 
 - (UILabel *)priceLabel {
     if (!_priceLabel) {
-        _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, self.contentView.bounds.size.width, 5)];
-        _priceLabel.backgroundColor = [UIColor orangeColor];
+        _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(3, 132, self.contentView.bounds.size.width, 7)];
+        _priceLabel.textColor = [UIColor whiteColor];
+//        _priceLabel.textAlignment = NSTextAlignmentCenter;
+        _priceLabel.font = [UIFont systemFontOfSize:12];
         [self.contentView addSubview:_priceLabel];
     }
     return _priceLabel;
