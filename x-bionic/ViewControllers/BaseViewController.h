@@ -10,4 +10,6 @@
 
 @interface BaseViewController : UIViewController
 
+@property (strong, nonatomic) NSString *titleString;
+
 @end

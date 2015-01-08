@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.titleString = @"仿生原型";
+    
     [self initScrollViewSetContentSizeWithWidth:ScreenWidth andHeight:1040];
     [self setBackGroundImageWithWidth:ScreenWidth andHeight:1040 andImageName:@"bionicprototypetext"];
 }

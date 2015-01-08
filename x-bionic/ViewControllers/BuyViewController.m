@@ -19,10 +19,6 @@
     UITableView *_tableView;
     NSMutableArray *_cellArr;
     UIButton *_tempBtn;
-//    NSInteger _specialCellID;
-//    NSMutableArray *_specialCellProductList1;
-//    NSMutableArray *_specialCellProductList2;
-//    NSInteger _specialCellState; // 记录当前出来的是哪个SpecailCell
     NSMutableArray *_productList0;
     NSMutableArray *_productList1;
     // 等待效果
@@ -42,9 +38,6 @@
                                           parameters:nil
                                              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                                  [_productList0 addObjectsFromArray:responseObject[@"data"]];
-//                                                 NSLog(@"_productList0:%@", _productList0[0]);
-                                                 //                                                 [self createTableView];
-                                                 //                                                 [_tableView reloadData];
                                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                  NSLog(@"%@", error.localizedDescription);
                                              }];
@@ -56,13 +49,9 @@
                                                  [_productList1 addObjectsFromArray:responseObject[@"data"]];
                                                  // 网络数据获取成功后关闭等待效果, 发送2个请求, 1个判断就够了
                                                  [Progress showProgressWithBool:NO];
-//                                                 [_HUD hide:YES];
                                                  // tableView的cell点击开启
                                                  _isUserInteractionEnabled = YES;
                                                  [_tableView reloadData];
-//                                                 NSLog(@"_productList1:%@", _productList1[0]);
-                                                 //                                                 [self createTableView];
-                                                 //                                                 [_tableView reloadData];
                                              } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                  NSLog(@"%@", error.localizedDescription);
                                                  [self alert];
@@ -109,7 +98,6 @@
     }
     // 创建SpecialCell, 并把网络数据传进去
     else {
-//        NSArray *productListArr = [[NSArray alloc] init];
         static NSString *identifier = @"Special";
         BuyTableViewSpecialCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
         if (cell == nil) {
@@ -127,29 +115,6 @@
         }
         [cell.collectionView reloadData];
         return cell;
-        
-        // 第一个SpecialCell, 用它们的identifier来区别2个SpecialCell
-//        if (indexPath.row == 1) {
-//            static NSString *identifier = @"Special";
-//            BuyTableViewSpecialCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//            if (cell == nil) {
-//                cell = [[BuyTableViewSpecialCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//            }
-//            return cell;
-//        }
-//        // 第二个SpecialCell
-//        else {
-//            static NSString *identifier = @"Special2";
-//            BuyTableViewSpecialCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-//            if (cell == nil) {
-//                cell = [[BuyTableViewSpecialCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
-//            }
-//            return cell;
-//        }
-//    }
-//    else {
-//        NSLog(@"错误的Cell");
-//    }
     }
     return 0;
 }
@@ -164,6 +129,7 @@
     }
 }
 
+// didSelect自带reloadData
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 当cell已经有3个的时候, 再次点击就删除
     if (_cellArr.count == 3) {
@@ -200,17 +166,12 @@
 - (void)didClickWithProductListDictionary:(NSDictionary *)productListDictionary {
     BuyDetailViewController *bdvc = [[BuyDetailViewController alloc] init];
     bdvc.productListDic = productListDictionary[@"productList"];
-//    NSLog(@"测试:%@", productListDictionary[@"productList"]);
-//    NSLog(@"测试:%ld", (NSInteger)productListDictionary[@"specialCellID"]);
+    
     // 把id类型转成NSInteger
     bdvc.cellID = [productListDictionary[@"specialCellID"] integerValue];
+    bdvc.productTitleString = productListDictionary[@"productTitle"];
     [self.navigationController pushViewController:bdvc animated:YES];
 }
-
-//- (void)push {
-//    BuyDetailViewController *bvc = [[BuyDetailViewController alloc] init];
-//    [self.navigationController pushViewController:bvc animated:YES];
-//}
 
 #pragma mark - Error Alert
 
@@ -221,11 +182,7 @@
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您的网络好像出现了问题"
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
-//    UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"取消"
-//                                                           style:UIAlertActionStyleCancel
-//                                                         handler:nil];
-    
-//    [alert addAction:actionCancel];
+
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:@"确定"
                                                            style:UIAlertActionStyleCancel
                                                          handler:nil];
@@ -239,20 +196,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.titleString = @"产品购买";
+    
     // tableView的cell点击关闭
     _isUserInteractionEnabled = NO;
 
-//    _HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-//    [self.navigationController.view addSubview:_HUD];
-//    _HUD.mode = MBProgressHUDModeIndeterminate;
-////    _HUD.delegate = self;
-//    // 打开等待效果
-//    [_HUD show:YES];
     // 打开等待效果
     [Progress showProgressWithBool:YES];
-    
-//    BuyTableViewSpecialCell *specialCell = [[BuyTableViewSpecialCell alloc] init];
-//    specialCell.delegate = self;
     
     _productList0 = [NSMutableArray array];
     _productList1 = [NSMutableArray array];
@@ -261,32 +211,8 @@
     [self getDataListWithCellState:0];
     [self getDataListWithCellState:1];
     
-    //    NSString *(^getUrlString)(NSInteger) = ^(NSInteger cellID){
-    //        if (cellID == 1) {
-    //            return @"http://bulo2bulo.com:8080/mobile/api/category/list.do?navId=100001";
-    //        }
-    //        else {
-    //            return @"http://bulo2bulo.com:8080/mobile/api/category/list.do?navId=100002";
-    //        }
-    //    };
-    
     NSArray *arr = @[@"Normal", @"Normal"];
     _cellArr = [NSMutableArray arrayWithArray:arr];
-    
-//    _tempBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    _tempBtn.frame = CGRectMake(100, 100, 50, 40);
-//    [_tempBtn setTitle:@"产品" forState:UIControlStateNormal];
-//    [_tempBtn addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
-//    UIBarButtonItem *rightBtn = [[UIBarButtonItem alloc] initWithCustomView:_tempBtn];
-//    self.navigationItem.rightBarButtonItem = rightBtn;
-    
-    
-//    _HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//    _HUD.delegate = self;
-//    [_HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
-//    [self.view addSubview:_HUD];
-    
-    
     
     [self createTableView];
 }

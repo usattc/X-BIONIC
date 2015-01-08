@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.titleString = @"所获奖项";
+    
     [self initScrollViewSetContentSizeWithWidth:ScreenWidth andHeight:1440];
     
     [self setBackGroundImageWithWidth:ScreenWidth andHeight:1440 andImageName:@"awareingtext"];

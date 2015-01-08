@@ -18,9 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"品牌历史";
+    self.titleString = @"品牌历史";
     
-    [self initScrollViewSetContentSizeWithWidth:ScreenWidth andHeight:2152];
+    [self initScrollViewSetContentSizeWithWidth:ScreenWidth andHeight: 2152];
+    NSLog(@"ScreenWidth:%g", ScreenWidth);
 
     [self setBackGroundImageWithWidth:ScreenWidth andHeight:2152 andImageName:@"histroytext"];
 }

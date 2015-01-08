@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSMutableDictionary *productListDic;
 @property (assign, nonatomic) NSInteger cellID;
+@property (strong, nonatomic) NSString *productTitleString;
 
 @end

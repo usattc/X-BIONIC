@@ -96,6 +96,11 @@
     [self.view addSubview:_collectionView];
 }
 
+// 产品的标题, 重写ProductTitleString
+- (void)setProductTitleString:(NSString *)productTitleString {
+    self.titleString = productTitleString;
+}
+
 #pragma mark - Sort Method
 
 // 升序方法

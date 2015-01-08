@@ -20,6 +20,7 @@
 //    self.edgesForExtendedLayout =UIRectEdgeNone;
 //    self.automaticallyAdjustsScrollViewInsets = NO;
     
+    // 让tableView从navigationBar下面开始
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.extendedLayoutIncludesOpaqueBars = NO;
 
@@ -36,6 +37,12 @@
     [leftBtn addTarget:self action:@selector(backMainPage) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:leftBtn];
     self.navigationItem.leftBarButtonItem = leftButton;
+}
+
+- (void)setTitleString:(NSString *)titleString {
+    self.navigationItem.title = titleString;
+    // 改title的颜色
+    self.navigationController.navigationBar.titleTextAttributes = [NSDictionary dictionaryWithObject:[UIColor lightGrayColor] forKey:NSForegroundColorAttributeName];
 }
 
 - (void)didReceiveMemoryWarning {

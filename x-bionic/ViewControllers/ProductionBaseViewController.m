@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.titleString = @"生产基地";
+    
     [self initScrollViewSetContentSizeWithWidth:ScreenWidth andHeight:960];
     
     [self setBackGroundImageWithWidth:ScreenWidth andHeight:960 andImageName:@"productbasetext"];

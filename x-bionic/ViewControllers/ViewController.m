@@ -40,8 +40,7 @@
 //    return self;
 //}
 
-- (void)dealloc
-{
+- (void)dealloc {
     //it's a good idea to set these to nil here to avoid
     //sending messages to a deallocated viewcontroller
     _carousel.delegate = nil;

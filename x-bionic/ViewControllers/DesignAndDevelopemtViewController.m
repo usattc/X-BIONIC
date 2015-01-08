@@ -18,6 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.titleString = @"设计和研发";
+    
     [self initScrollViewSetContentSizeWithWidth:ScreenWidth andHeight:2320];
     
     [self setBackGroundImageWithWidth:ScreenWidth andHeight:2320 andImageName:@"designanddevelopemttext"];

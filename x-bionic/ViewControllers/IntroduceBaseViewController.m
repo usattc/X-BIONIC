@@ -23,7 +23,7 @@
 // 放入原图的原始尺寸即可
 - (void)initScrollViewSetContentSizeWithWidth:(CGFloat)width andHeight:(CGFloat)height {
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-    CGFloat heightTemp = (height / 2 * (736.0 / 568) + 64);
+    CGFloat heightTemp = (height / 2 + 64);
     height = heightTemp;
 //    NSLog(@"ScreenWidth:%g", ScreenWidth);
 //    NSLog(@"height:%g", height);
@@ -34,7 +34,7 @@
 }
 
 - (void)setBackGroundImageWithWidth:(CGFloat)width andHeight:(CGFloat)height andImageName:(NSString *)imageName {
-    CGFloat heightTemp = (height / 2 * (736.0 / 568));
+    CGFloat heightTemp = (height / 2);
     height = heightTemp;
     UIImageView *backGroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, width, height)];
 //    NSLog(@"width:%g", width);

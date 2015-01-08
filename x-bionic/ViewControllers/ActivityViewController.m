@@ -25,6 +25,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.titleString = @"X的活动";
 
     _dataList = [NSMutableArray array];
     
